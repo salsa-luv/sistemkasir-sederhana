@@ -22,4 +22,64 @@ def tampilkan_produk():
     for nama, harga in produk.items():
         print(f"{i}. {nama} - Rp {harga}")
         i += 1
-        print("=============================")
+    print("=============================")
+
+def tampilkan_barang_urutan_harga():
+    print("\n===== BARANG TERMURAH - TERMAHAL =====")
+
+    daftar_harga = list(produk.values())
+    daftar_harga.sort()
+
+    for harga in daftar_harga:
+        for nama in produk:
+            if produk[nama] == harga:
+                print(f"{nama} - Rp {harga}")
+
+print("===================================")
+
+
+def edit_barang():
+    while True:
+        tampilkan_produk()
+        print("\n --- Menu Edit Barang ---")
+        print("1. Tambah Barang")
+        print("2. Edit Harga Barang")
+        print("3. Hapus Barang")
+        print("4. Kembali ke Menu Utama")
+
+        try:
+            pilih = int(input("Pilih Menu: "))
+        except ValueError:
+            print("input harus berupa angka! Silahkan Coba Lagi.")
+            continue
+
+        if pilih == 1:
+            nama = input("Masukkan nama barang baru: ").title()
+            harga = int(input("Masukkan harga barang baru: "))
+            produk[nama] = harga
+            update_file()
+            print("Barang berhasil ditambahkan!")
+
+        elif pilih == 2:
+            nama  = input("Masukkan nama barang yang akan diubah: ").title()
+            if nama in produk:
+                harga_baru = int(input("Masukkan harga baru: "))
+                produk[nama] = harga_baru
+                update_file()
+                print("Harga barang berhasil diubah!")
+            else:
+                print("Barang tidak ditemukan!")
+        
+        elif pilih == 3:
+            nama = input("Masukkan nama barang yang akan dihapus: ").title()
+            if nama in produk:
+                del produk[nama]
+                update_file()
+                print("Barang berhasil dihapus!")
+            else:
+                print("Barang tidak ditemukan!")
+
+        elif pilih == 4:
+            break
+        else:
+            print("Pilihan tidak valid! Silahkan coba lagi.")
