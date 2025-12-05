@@ -8,7 +8,7 @@ produk = {
 def update_file():
     with open("database_barang.txt", "w") as file:
         for nama, harga in produk.items():
-            file.write(f"{nama};{harga}\n")
+            file.write(f"{nama} = {harga}\n")
 
 # menampilkan produk
 def tampilkan_produk():
