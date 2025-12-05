@@ -106,7 +106,7 @@ def transaksi():
                 print("baang tidak di temukan")
 
         elif pilih == 2:
-            nama = int(input("masukkan nama barang baru: ")).titile()
+            nama = input("masukkan nama barang baru: ").title()
             harga = int(input("masukkan harga: "))
             keranjang.append((nama, harga))
             total += harga
@@ -121,6 +121,45 @@ def transaksi():
     potongan = total * (diskon / 100)
     harga_akhir = total - potongan
 
+    print("\n========================= STRUK BELANJA =========================")
+    for nama, harga in keranjang:
+        print(f"{nama} - Rp {harga}")
+    print("-----------------------------------------------------------------------")
+    print(f"Total Harga Awal    : Rp {total}")
+    print(f"Diskon              : {diskon}%")
+    print(f"Total Akhir         : Rp{int(harga_akhir)}")
+    print("=======================================================================")
+    print("Terima kasih sudah berbelanja:)")
+    print("=======================================================================")
+
+# menu utama
+while True:
+    print("\n==== MENU UTAMA ====")
+    print("1. Data Barang")
+    print("2. Edit Barang")
+    print("3. Transaksi")
+    print("4. Urutkan Harga (Termurah - Termahal)")
+    print("5. Keluar Program")
+
+    try:
+        pilihan = int(input("Pilih menu: "))
+    except ValueError:
+        print("Input harus berupa angka!")
+        continue
+
+    if pilihan == 1:
+        tampilkan_produk()
+    elif pilihan == 2:
+        edit_barang()
+    elif pilihan == 3:
+        transaksi()
+    elif pilihan == 4:
+        tampilkan_barang_urutan_harga()
+    elif pilihan == 5:
+        print("Program selesai. Terimakasih!")
+        break
+    else:
+        print("Pilihan tidak valid! Masukkan angka 1-5!")
 
 
         

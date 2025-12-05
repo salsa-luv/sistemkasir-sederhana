@@ -1,3 +1,4 @@
-Sabun;5000
+Sabun;7500
 Shampoo;12000
-Pasta Gigi;8000
+Nugget;37500
+Spaghetti;149500
