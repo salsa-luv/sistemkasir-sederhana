@@ -5,15 +5,10 @@ produk = {
     "Pasta Gigi" : 8000,
 }
 
-# membuat file dan memasukkan data awal
-with open("database_barang.txt", "w") as file:
-    for nama, harga in produk.items():
-        file.write(f"{nama};{harga}\n")
-
-# menyimpan barang baru ke dalam file
-def simpan_ke_file(nama, harga):
-    with open("database_barang.txt", "a") as file:
-        file.write(f"{nama};{harga}\n")
+def update_file():
+    with open("database_barang.txt", "w") as file:
+        for nama, harga in produk.items():
+            file.write(f"{nama};{harga}\n")
 
 # menampilkan produk
 def tampilkan_produk():
@@ -22,7 +17,7 @@ def tampilkan_produk():
     for nama, harga in produk.items():
         print(f"{i}. {nama} - Rp {harga}")
         i += 1
-    print("=============================")
+    print("=====================")
 
 def tampilkan_barang_urutan_harga():
     print("\n===== BARANG TERMURAH - TERMAHAL =====")
@@ -34,8 +29,7 @@ def tampilkan_barang_urutan_harga():
         for nama in produk:
             if produk[nama] == harga:
                 print(f"{nama} - Rp {harga}")
-
-print("===================================")
+    print("===============================")
 
 
 def edit_barang():
@@ -83,3 +77,50 @@ def edit_barang():
             break
         else:
             print("Pilihan tidak valid! Silahkan coba lagi.")
+
+def transaksi():
+    keranjang = []
+    total = 0
+
+    while True:
+        tampilkan_produk()
+        print("\n--- Menu Transaksi ---")
+        print("1. pilih barang dari daftar")
+        print("2. tambahkan barang baru")
+        print("3. selesai dan cetak struk")
+
+        try:
+            pilih = int(input("pilih menu: "))
+        except ValueError:
+            print("input harus berupa angka! coba lagi.")
+            continue
+
+        if pilih == 1:
+            nama = input("masukkan nama barang: ").title()
+            if nama in produk:
+                harga = produk[nama]
+                keranjang.append((nama, harga))
+                total += harga 
+                print("barang ditambahkan ke keranjang!")
+            else:
+                print("baang tidak di temukan")
+
+        elif pilih == 2:
+            nama = int(input("masukkan nama barang baru: ")).titile()
+            harga = int(input("masukkan harga: "))
+            keranjang.append((nama, harga))
+            total += harga
+            print("Barang baru di tambahkan keranjang!")
+
+        elif  pilih == 3:
+            break
+        else:
+            print("pilihan tidak valid!")
+
+    diskon = int(input("masukkan diskon (%): "))
+    potongan = total * (diskon / 100)
+    harga_akhir = total - potongan
+
+
+
+        
