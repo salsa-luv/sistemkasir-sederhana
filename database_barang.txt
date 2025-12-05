@@ -1,0 +1,3 @@
+Sabun;5000
+Shampoo;12000
+Pasta Gigi;8000
