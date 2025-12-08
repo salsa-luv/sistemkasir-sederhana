@@ -105,7 +105,7 @@ def transaksi():
                 total += harga 
                 print("barang ditambahkan ke keranjang!")
             else:
-                print("baang tidak di temukan")
+                print("barang tidak di temukan")
 
         elif pilih == 2:
             nama = input("masukkan nama barang baru: ").title()
