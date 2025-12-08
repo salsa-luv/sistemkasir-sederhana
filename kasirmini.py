@@ -4,7 +4,7 @@ produk = {
     "Shampoo" : 12000,
     "Pasta Gigi" : 8000,
 }
-
+# buat dan update file
 def update_file():
     with open("database_barang.txt", "w") as file:
         for nama, harga in produk.items():
@@ -18,7 +18,8 @@ def tampilkan_produk():
         print(f"{i}. {nama} - Rp {harga}")
         i += 1
     print("=====================")
-
+    
+# filter menampilkan harga dari yang termurah sampai yang termahal
 def tampilkan_barang_urutan_harga():
     print("\n===== BARANG TERMURAH - TERMAHAL =====")
 
@@ -31,7 +32,7 @@ def tampilkan_barang_urutan_harga():
                 print(f"{nama} - Rp {harga}")
     print("===============================")
 
-
+# edit barang database
 def edit_barang():
     while True:
         tampilkan_produk()
@@ -77,7 +78,8 @@ def edit_barang():
             break
         else:
             print("Pilihan tidak valid! Silahkan coba lagi.")
-
+            
+# melakukan transaksi
 def transaksi():
     keranjang = []
     total = 0
@@ -116,7 +118,8 @@ def transaksi():
             break
         else:
             print("pilihan tidak valid!")
-
+            
+    #memberikan diskon
     diskon = int(input("masukkan diskon (%): "))
     potongan = total * (diskon / 100)
     harga_akhir = total - potongan
